@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.b7f7efeb.chunk.css",
-    "main.js": "/static/js/main.20891344.chunk.js",
-    "main.js.map": "/static/js/main.20891344.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4710d124.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4710d124.js.map",
-    "static/js/2.6a91f6d3.chunk.js": "/static/js/2.6a91f6d3.chunk.js",
-    "static/js/2.6a91f6d3.chunk.js.map": "/static/js/2.6a91f6d3.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.4b154216983c405568f476405ea037dc.js": "/precache-manifest.4b154216983c405568f476405ea037dc.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.b7f7efeb.chunk.css.map": "/static/css/main.b7f7efeb.chunk.css.map",
-    "static/js/2.6a91f6d3.chunk.js.LICENSE.txt": "/static/js/2.6a91f6d3.chunk.js.LICENSE.txt",
-    "static/media/boy-girl.png": "/static/media/boy-girl.b30d8a3d.png",
-    "static/media/itsaboy.png": "/static/media/itsaboy.cd045601.png",
-    "static/media/itsagirl.png": "/static/media/itsagirl.753aeb80.png"
+    "main.css": "/gender-guess/static/css/main.b7f7efeb.chunk.css",
+    "main.js": "/gender-guess/static/js/main.b5c2ffd2.chunk.js",
+    "main.js.map": "/gender-guess/static/js/main.b5c2ffd2.chunk.js.map",
+    "runtime-main.js": "/gender-guess/static/js/runtime-main.0f49d540.js",
+    "runtime-main.js.map": "/gender-guess/static/js/runtime-main.0f49d540.js.map",
+    "static/js/2.ca763ada.chunk.js": "/gender-guess/static/js/2.ca763ada.chunk.js",
+    "static/js/2.ca763ada.chunk.js.map": "/gender-guess/static/js/2.ca763ada.chunk.js.map",
+    "index.html": "/gender-guess/index.html",
+    "precache-manifest.3668c58e7008158ec1c37674b0cb1073.js": "/gender-guess/precache-manifest.3668c58e7008158ec1c37674b0cb1073.js",
+    "service-worker.js": "/gender-guess/service-worker.js",
+    "static/css/main.b7f7efeb.chunk.css.map": "/gender-guess/static/css/main.b7f7efeb.chunk.css.map",
+    "static/js/2.ca763ada.chunk.js.LICENSE.txt": "/gender-guess/static/js/2.ca763ada.chunk.js.LICENSE.txt",
+    "static/media/boy-girl.png": "/gender-guess/static/media/boy-girl.b30d8a3d.png",
+    "static/media/itsaboy.png": "/gender-guess/static/media/itsaboy.cd045601.png",
+    "static/media/itsagirl.png": "/gender-guess/static/media/itsagirl.753aeb80.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.4710d124.js",
-    "static/js/2.6a91f6d3.chunk.js",
+    "static/js/runtime-main.0f49d540.js",
+    "static/js/2.ca763ada.chunk.js",
     "static/css/main.b7f7efeb.chunk.css",
-    "static/js/main.20891344.chunk.js"
+    "static/js/main.b5c2ffd2.chunk.js"
   ]
 }
