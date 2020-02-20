@@ -21,7 +21,13 @@ import moment from 'moment';
 import 'moment/locale/he';
 import './App.css';
 import countdown from 'countdown';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 require('moment-countdown');
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
 
 countdown.setLabels(
   ' אלפיות השנייה | שניה | דקה | שעה | יום | שבוע | חודש | שנה | עשור | מאה | אלף',
@@ -58,7 +64,8 @@ export class App extends Component {
       endTimeStamp: '',
       isLoading: true,
       timeLeft: '',
-      realGender: 'boy'
+      realGender: 'boy',
+      nameError: false
     };
   }
 
@@ -75,6 +82,7 @@ export class App extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 1);
     moment.locale('he');
     const fetchData = async () => {
       const db = firebase.firestore();
@@ -94,22 +102,30 @@ export class App extends Component {
   }
 
   handleNameChange = e => {
-    this.setState({ name: e.target.value });
+    this.setState({ name: e.target.value, nameError: false });
   };
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     if (this.state.name.length > 0) {
       const addData = async () => {
         const db = firebase.firestore();
         const newVote = { name: this.state.name, gender: this.state.genderSw };
-        db.collection('votes')
-          .add(newVote)
-          .then(() => {
+
+        const votesRef = db.collection('votes');
+
+        var query = await votesRef.where('name', '==', newVote.name).get();
+
+        if (query.empty) {
+          votesRef.add(newVote).then(() => {
             this.setState({ votes: [...this.state.votes, newVote] });
           });
+        } else {
+          this.setState({ nameError: true });
+        }
       };
       addData();
     } else {
+      this.setState({ nameError: true });
     }
   };
 
@@ -152,6 +168,14 @@ export class App extends Component {
     clearInterval(this.timer);
   }
 
+  handleSnackClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({ nameError: false });
+  };
+
   render() {
     let time = moment(Date.now()).countdown(this.state.endTimeStamp);
     if (time.value < 500) {
@@ -191,6 +215,7 @@ export class App extends Component {
                         style={{ margin: '1vh' }}
                         value={this.state.name}
                         onChange={this.handleNameChange}
+                        error={this.state.nameError}
                       />
                       <FormControlLabel
                         style={{ marginRight: -10, marginLeft: 0 }}
@@ -335,6 +360,16 @@ export class App extends Component {
               </p>
             </div>
           </div>
+          <Snackbar
+            open={this.state.nameError}
+            autoHideDuration={6000}
+            onClose={this.handleSnackClose}
+            anchorOrigin={{ horizontal: 'center', vertical: 'top' }}
+          >
+            <Alert onClose={this.handleSnackClose} severity='error'>
+              שם כבר קיים או לא תקין!
+            </Alert>
+          </Snackbar>
         </StylesProvider>
       </ThemeProvider>
     );
