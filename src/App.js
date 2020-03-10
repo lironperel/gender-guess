@@ -23,6 +23,9 @@ import './App.css';
 import countdown from 'countdown';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import EmojiEvents from '@material-ui/icons/EmojiEvents';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+
 require('moment-countdown');
 
 function Alert(props) {
@@ -65,7 +68,8 @@ export class App extends Component {
       isLoading: true,
       timeLeft: '',
       realGender: 'boy',
-      nameError: false
+      nameError: false,
+      showWinners: false
     };
   }
 
@@ -82,12 +86,16 @@ export class App extends Component {
   };
 
   componentDidMount() {
+    document.body.style.overflowY = 'hidden';
+    document.body.style.backgroundColor = 'ivory';
+
     window.scrollTo(0, 1);
     moment.locale('he');
     const fetchData = async () => {
       const db = firebase.firestore();
       let dbvotes = [];
       db.collection('votes')
+        .orderBy('name')
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
@@ -105,7 +113,8 @@ export class App extends Component {
     this.setState({ name: e.target.value, nameError: false });
   };
 
-  handleSubmit = async () => {
+  handleSubmit = async e => {
+    e.preventDefault();
     if (this.state.name.length > 0) {
       const addData = async () => {
         const db = firebase.firestore();
@@ -117,7 +126,11 @@ export class App extends Component {
 
         if (query.empty) {
           votesRef.add(newVote).then(() => {
-            this.setState({ votes: [...this.state.votes, newVote] });
+            this.setState({
+              votes: [newVote, ...this.state.votes],
+              name: '',
+              genderSw: true
+            });
           });
         } else {
           this.setState({ nameError: true });
@@ -186,16 +199,25 @@ export class App extends Component {
         <StylesProvider jss={jss}>
           <div className='App'>
             <div className='Header'>
+              <div
+                style={{
+                  fontSize: '1.2rem',
+                  textShadow: '2px 2px 5px gray'
+                }}
+              >
+                אז למי שני ולירון מצפים?
+              </div>
               <img
                 className='babies'
-                style={{ width: '40%' }}
+                style={{ width: '50%' }}
                 src={require('../src/images/boy-girl.png')}
                 alt='Logo'
               />
-              <br />
-              <span style={{ color: '#69C3FF' }}>בן </span>
-              {'או '}
-              <span style={{ color: '#E281AB' }}>בת? </span>
+              <div>
+                <span style={{ color: '#69C3FF' }}>בן </span>
+                {'או '}
+                <span style={{ color: '#E281AB' }}>בת? </span>
+              </div>
             </div>
             {this.state.isLoading ? (
               <div className='Content'>
@@ -203,10 +225,17 @@ export class App extends Component {
               </div>
             ) : (
               <div className='Content'>
-                {time.value > 500 && (
+                {time.value > 500 ? (
                   <>
-                    יאללה, גם את/ה מוזמן/ת לנחש :)
-                    <form className='name-form' noValidate autoComplete='off'>
+                    <div style={{ textShadow: '2px 2px 5px gray' }}>
+                      יאללה, גם את/ה מוזמן/ת לנחש :)
+                    </div>
+                    <form
+                      className='name-form'
+                      onSubmit={this.handleSubmit}
+                      noValidate
+                      autoComplete='off'
+                    >
                       <TextField
                         id='outlined-basic'
                         label='שם מלא'
@@ -244,40 +273,126 @@ export class App extends Component {
                         variant='contained'
                         color='primary'
                         onClick={this.handleSubmit}
+                        type='submit'
                       >
                         שלח
                       </Button>
                     </form>
                   </>
+                ) : (
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    size='small'
+                    style={{
+                      alignSelf: 'center',
+                      width: '40vw',
+                      margin: '3%'
+                    }}
+                    endIcon={
+                      this.state.showWinners ? (
+                        <ArrowBackIosIcon />
+                      ) : (
+                        <EmojiEvents />
+                      )
+                    }
+                    onClick={() =>
+                      this.setState({
+                        showWinners: !this.state.showWinners
+                      })
+                    }
+                  >
+                    {this.state.showWinners ? 'חזרה' : 'צפה בזוכים'}
+                  </Button>
                 )}
                 <List
                   style={{
-                    flex: '7',
-                    maxHeight: time.value < 500 ? '60vh' : '40vh',
+                    // height: '100%',
+                    height: time.value < 500 ? '45vh' : '40vh',
                     overflow: 'auto'
                   }}
                   dense={true}
                 >
                   {this.state.isLoading || time.value < 500 ? (
-                    <ListItem
+                    <div
                       style={{
                         textAlign: 'center',
-                        flex: 1,
+                        // flex: 1,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        alignSelf: 'center'
+                        alignSelf: 'center',
+                        flexDirection: 'column'
                       }}
                     >
                       {this.state.isLoading && <CircularProgress />}
-                      {time.value < 500 && (
-                        <img
-                          className='babies'
-                          style={{ width: '100%' }}
-                          src={require(`../src/images/itsa${this.state.realGender}.png`)}
-                          alt='Logo'
-                        />
-                      )}
-                    </ListItem>
+                      {time.value < 500 &&
+                        (this.state.showWinners ? (
+                          <List
+                            style={{
+                              height: '100%',
+                              maxWidth: '90%'
+                            }}
+                          >
+                            {this.state.votes
+                              .filter(
+                                vote =>
+                                  vote.gender ===
+                                  (this.state.realGender === 'boy')
+                              )
+                              .map((vote, i) => (
+                                <ListItem key={i}>
+                                  <ListItemText
+                                    primaryTypographyProps={{
+                                      style: {
+                                        fontWeight: 'bold',
+                                        color: '#8566BA',
+                                        marginRight: '10%'
+                                      }
+                                    }}
+                                    primary={vote.name}
+                                    secondary={null}
+                                  />
+                                  <ListItemIcon
+                                    style={{
+                                      // flex: 1,
+                                      // paddingLeft: 15,
+                                      justifyContent: 'flex-end'
+                                    }}
+                                  >
+                                    <>
+                                      <Typography
+                                        style={{
+                                          color: vote.gender
+                                            ? '#69C3FF'
+                                            : '#E281AB',
+                                          fontWeight: 'bold',
+                                          marginLeft: 5
+                                        }}
+                                      >
+                                        {vote.gender ? 'בן' : 'בת'}
+                                      </Typography>
+                                      <ChildCareTwoToneIcon
+                                        style={{
+                                          color: vote.gender
+                                            ? '#69C3FF'
+                                            : '#E281AB'
+                                        }}
+                                      />
+                                    </>
+                                  </ListItemIcon>
+                                </ListItem>
+                              ))}
+                          </List>
+                        ) : (
+                          <img
+                            style={{
+                              maxWidth: '70%'
+                            }}
+                            src={require(`../src/images/itsa${this.state.realGender}.png`)}
+                            alt='Logo'
+                          />
+                        ))}
+                    </div>
                   ) : this.state.votes.length > 0 ? (
                     this.state.votes.map((vote, i) => (
                       <ListItem key={i}>
