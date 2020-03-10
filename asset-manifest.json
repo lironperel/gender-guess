@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/gender-guess/static/css/main.b7f7efeb.chunk.css",
-    "main.js": "/gender-guess/static/js/main.56a5e8f5.chunk.js",
-    "main.js.map": "/gender-guess/static/js/main.56a5e8f5.chunk.js.map",
+    "main.css": "/gender-guess/static/css/main.88c291f7.chunk.css",
+    "main.js": "/gender-guess/static/js/main.ab194343.chunk.js",
+    "main.js.map": "/gender-guess/static/js/main.ab194343.chunk.js.map",
     "runtime-main.js": "/gender-guess/static/js/runtime-main.0f49d540.js",
     "runtime-main.js.map": "/gender-guess/static/js/runtime-main.0f49d540.js.map",
-    "static/js/2.20f8a708.chunk.js": "/gender-guess/static/js/2.20f8a708.chunk.js",
-    "static/js/2.20f8a708.chunk.js.map": "/gender-guess/static/js/2.20f8a708.chunk.js.map",
+    "static/js/2.292b484d.chunk.js": "/gender-guess/static/js/2.292b484d.chunk.js",
+    "static/js/2.292b484d.chunk.js.map": "/gender-guess/static/js/2.292b484d.chunk.js.map",
     "index.html": "/gender-guess/index.html",
-    "precache-manifest.1419050c4f8972d28ff178df3a187af1.js": "/gender-guess/precache-manifest.1419050c4f8972d28ff178df3a187af1.js",
+    "precache-manifest.4336f85907fd20fc281ef994da9a9f6e.js": "/gender-guess/precache-manifest.4336f85907fd20fc281ef994da9a9f6e.js",
     "service-worker.js": "/gender-guess/service-worker.js",
-    "static/css/main.b7f7efeb.chunk.css.map": "/gender-guess/static/css/main.b7f7efeb.chunk.css.map",
-    "static/js/2.20f8a708.chunk.js.LICENSE.txt": "/gender-guess/static/js/2.20f8a708.chunk.js.LICENSE.txt",
+    "static/css/main.88c291f7.chunk.css.map": "/gender-guess/static/css/main.88c291f7.chunk.css.map",
+    "static/js/2.292b484d.chunk.js.LICENSE.txt": "/gender-guess/static/js/2.292b484d.chunk.js.LICENSE.txt",
     "static/media/boy-girl.png": "/gender-guess/static/media/boy-girl.b30d8a3d.png",
     "static/media/itsaboy.png": "/gender-guess/static/media/itsaboy.cd045601.png",
     "static/media/itsagirl.png": "/gender-guess/static/media/itsagirl.753aeb80.png"
   },
   "entrypoints": [
     "static/js/runtime-main.0f49d540.js",
-    "static/js/2.20f8a708.chunk.js",
-    "static/css/main.b7f7efeb.chunk.css",
-    "static/js/main.56a5e8f5.chunk.js"
+    "static/js/2.292b484d.chunk.js",
+    "static/css/main.88c291f7.chunk.css",
+    "static/js/main.ab194343.chunk.js"
   ]
 }
