@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/gender-guess/static/css/main.cb8e6e05.chunk.css",
+    "main.css": "/gender-guess/static/css/main.903b65ef.chunk.css",
     "main.js": "/gender-guess/static/js/main.ab194343.chunk.js",
     "main.js.map": "/gender-guess/static/js/main.ab194343.chunk.js.map",
     "runtime-main.js": "/gender-guess/static/js/runtime-main.0f49d540.js",
@@ -8,9 +8,9 @@
     "static/js/2.292b484d.chunk.js": "/gender-guess/static/js/2.292b484d.chunk.js",
     "static/js/2.292b484d.chunk.js.map": "/gender-guess/static/js/2.292b484d.chunk.js.map",
     "index.html": "/gender-guess/index.html",
-    "precache-manifest.83954633aa2b7e02509077e3a79021ab.js": "/gender-guess/precache-manifest.83954633aa2b7e02509077e3a79021ab.js",
+    "precache-manifest.90ce06153ec5593fed07ee32463cf263.js": "/gender-guess/precache-manifest.90ce06153ec5593fed07ee32463cf263.js",
     "service-worker.js": "/gender-guess/service-worker.js",
-    "static/css/main.cb8e6e05.chunk.css.map": "/gender-guess/static/css/main.cb8e6e05.chunk.css.map",
+    "static/css/main.903b65ef.chunk.css.map": "/gender-guess/static/css/main.903b65ef.chunk.css.map",
     "static/js/2.292b484d.chunk.js.LICENSE.txt": "/gender-guess/static/js/2.292b484d.chunk.js.LICENSE.txt",
     "static/media/boy-girl.png": "/gender-guess/static/media/boy-girl.b30d8a3d.png",
     "static/media/itsaboy.png": "/gender-guess/static/media/itsaboy.cd045601.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.0f49d540.js",
     "static/js/2.292b484d.chunk.js",
-    "static/css/main.cb8e6e05.chunk.css",
+    "static/css/main.903b65ef.chunk.css",
     "static/js/main.ab194343.chunk.js"
   ]
 }
