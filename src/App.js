@@ -206,6 +206,9 @@ export class App extends Component {
 
   render() {
     let time = moment(Date.now()).countdown(this.state.endTimeStamp);
+    let sortedVotes = this.state.votes.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
     if (time.value < 500) {
       clearInterval(this.timer);
     }
@@ -348,7 +351,7 @@ export class App extends Component {
                               maxWidth: "90%"
                             }}
                           >
-                            {this.state.votes
+                            {sortedVotes
                               .filter(
                                 vote =>
                                   vote.gender ===
@@ -408,8 +411,8 @@ export class App extends Component {
                           />
                         ))}
                     </div>
-                  ) : this.state.votes.length > 0 ? (
-                    this.state.votes.map((vote, i) => (
+                  ) : sortedVotes.length > 0 ? (
+                    sortedVotes.map((vote, i) => (
                       <ListItem key={i}>
                         <ListItemIcon>
                           <PersonIcon />
