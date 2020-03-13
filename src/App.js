@@ -326,7 +326,7 @@ export class App extends Component {
                 <List
                   style={{
                     // height: '100%',
-                    height: time.value < 500 ? "45vh" : "40vh",
+                    height: time.value < 500 ? "47vh" : "35vh",
                     overflow: "auto"
                   }}
                   dense={true}
