@@ -143,7 +143,6 @@ export class App extends Component {
         if (query.empty) {
           votesRef.add(newVote).then(() => {
             this.setState({
-              votes: [newVote, ...this.state.votes],
               name: "",
               genderSw: true
             });
