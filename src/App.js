@@ -25,6 +25,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import EmojiEvents from "@material-ui/icons/EmojiEvents";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import Div100vh from "react-div-100vh";
 
 require("moment-countdown");
 
@@ -215,208 +216,256 @@ export class App extends Component {
     return (
       <ThemeProvider theme={{ direction: "rtl" }}>
         <StylesProvider jss={jss}>
-          <div className="App">
-            <div className="Header">
-              <div
-                style={{
-                  fontSize: "1.2rem",
-                  textShadow: "2px 2px 5px gray"
-                }}
-              >
-                אז למי שני ולירון מצפים?
-              </div>
-              <img
-                className="babies"
-                style={{ width: "50%" }}
-                src={require("../src/images/boy-girl.png")}
-                alt="Logo"
-              />
-              <div>
-                <span style={{ color: "#69C3FF" }}>בן </span>
-                {"או "}
-                <span style={{ color: "#E281AB" }}>בת? </span>
-              </div>
-            </div>
-            {this.state.isLoading ? (
-              <div className="Content">
-                <CircularProgress />
-              </div>
-            ) : (
-              <div className="Content">
-                {time.value > 500 ? (
-                  <>
-                    <div style={{ textShadow: "2px 2px 5px gray" }}>
-                      יאללה, גם את/ה מוזמן/ת לנחש :)
-                    </div>
-                    <form
-                      className="name-form"
-                      onSubmit={this.handleSubmit}
-                      noValidate
-                      autoComplete="off"
-                    >
-                      <TextField
-                        id="outlined-basic"
-                        label="שם מלא"
-                        variant="outlined"
-                        size="small"
-                        style={{ margin: "1vh" }}
-                        value={this.state.name}
-                        onChange={this.handleNameChange}
-                        error={this.state.nameError}
-                      />
-                      <FormControlLabel
-                        style={{ marginRight: -10, marginLeft: 0 }}
-                        control={
-                          <GenderSwitch
-                            checked={this.state.genderSw}
-                            onChange={this.handleSwChange}
-                            value="checkedA"
-                          />
-                        }
-                        label={
-                          <Typography
-                            style={{
-                              color: this.state.genderSw
-                                ? "#69C3FF"
-                                : "#E281AB",
-                              fontWeight: "bold"
-                            }}
-                          >
-                            {this.state.genderSw ? "בן" : "בת"}
-                          </Typography>
-                        }
-                        labelPlacement="top"
-                      />
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={this.handleSubmit}
-                        type="submit"
-                      >
-                        שלח
-                      </Button>
-                    </form>
-                  </>
-                ) : (
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    style={{
-                      alignSelf: "center",
-                      width: "40vw",
-                      margin: "3%"
-                    }}
-                    endIcon={
-                      this.state.showWinners ? (
-                        <ArrowBackIosIcon />
-                      ) : (
-                        <EmojiEvents />
-                      )
-                    }
-                    onClick={() =>
-                      this.setState({
-                        showWinners: !this.state.showWinners
-                      })
-                    }
-                  >
-                    {this.state.showWinners ? "חזרה" : "צפה בזוכים"}
-                  </Button>
-                )}
-                <List
+          <Div100vh>
+            <div className="App">
+              <div className="Header">
+                <div
                   style={{
-                    // height: '100%',
-                    height: time.value < 500 ? "47vh" : "35vh",
-                    overflow: "auto"
+                    fontSize: "1.2rem",
+                    textShadow: "2px 2px 5px gray"
                   }}
-                  dense={true}
                 >
-                  {this.state.isLoading || time.value < 500 ? (
-                    <div
+                  אז למי שני ולירון מצפים?
+                </div>
+                <img
+                  className="babies"
+                  style={{ width: "50%" }}
+                  src={require("../src/images/boy-girl.png")}
+                  alt="Logo"
+                />
+                <div>
+                  <span style={{ color: "#69C3FF" }}>בן </span>
+                  {"או "}
+                  <span style={{ color: "#E281AB" }}>בת? </span>
+                </div>
+              </div>
+              {this.state.isLoading ? (
+                <div className="Content">
+                  <CircularProgress />
+                </div>
+              ) : (
+                <div className="Content">
+                  {time.value > 500 ? (
+                    <>
+                      <div style={{ textShadow: "2px 2px 5px gray" }}>
+                        יאללה, גם את/ה מוזמן/ת לנחש :)
+                      </div>
+                      <form
+                        className="name-form"
+                        onSubmit={this.handleSubmit}
+                        noValidate
+                        autoComplete="off"
+                      >
+                        <TextField
+                          id="outlined-basic"
+                          label="שם מלא"
+                          variant="outlined"
+                          size="small"
+                          style={{ margin: "1vh" }}
+                          value={this.state.name}
+                          onChange={this.handleNameChange}
+                          error={this.state.nameError}
+                        />
+                        <FormControlLabel
+                          style={{ marginRight: -10, marginLeft: 0 }}
+                          control={
+                            <GenderSwitch
+                              checked={this.state.genderSw}
+                              onChange={this.handleSwChange}
+                              value="checkedA"
+                            />
+                          }
+                          label={
+                            <Typography
+                              style={{
+                                color: this.state.genderSw
+                                  ? "#69C3FF"
+                                  : "#E281AB",
+                                fontWeight: "bold"
+                              }}
+                            >
+                              {this.state.genderSw ? "בן" : "בת"}
+                            </Typography>
+                          }
+                          labelPlacement="top"
+                        />
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={this.handleSubmit}
+                          type="submit"
+                        >
+                          שלח
+                        </Button>
+                      </form>
+                    </>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="small"
                       style={{
-                        textAlign: "center",
-                        // flex: 1,
-                        alignItems: "center",
-                        justifyContent: "center",
                         alignSelf: "center",
-                        flexDirection: "column"
+                        width: "40vw",
+                        margin: "3%"
                       }}
+                      endIcon={
+                        this.state.showWinners ? (
+                          <ArrowBackIosIcon />
+                        ) : (
+                          <EmojiEvents />
+                        )
+                      }
+                      onClick={() =>
+                        this.setState({
+                          showWinners: !this.state.showWinners
+                        })
+                      }
                     >
-                      {this.state.isLoading && <CircularProgress />}
-                      {time.value < 500 &&
-                        (this.state.showWinners ? (
-                          <List
+                      {this.state.showWinners ? "חזרה" : "צפה בזוכים"}
+                    </Button>
+                  )}
+                  <List
+                    style={{
+                      // height: '100%',
+                      height: time.value < 500 ? "47vh" : "35vh",
+                      overflow: "auto"
+                    }}
+                    dense={true}
+                  >
+                    {this.state.isLoading || time.value < 500 ? (
+                      <div
+                        style={{
+                          textAlign: "center",
+                          // flex: 1,
+                          alignItems: "center",
+                          justifyContent: "center",
+                          alignSelf: "center",
+                          flexDirection: "column"
+                        }}
+                      >
+                        {this.state.isLoading && <CircularProgress />}
+                        {time.value < 500 &&
+                          (this.state.showWinners ? (
+                            <List
+                              style={{
+                                height: "100%",
+                                maxWidth: "90%"
+                              }}
+                            >
+                              {sortedVotes
+                                .filter(
+                                  vote =>
+                                    vote.gender ===
+                                    (this.state.realGender === "boy")
+                                )
+                                .map((vote, i) => (
+                                  <ListItem key={i}>
+                                    <ListItemText
+                                      primaryTypographyProps={{
+                                        style: {
+                                          fontWeight: "bold",
+                                          color: "#8566BA",
+                                          marginRight: "10%"
+                                        }
+                                      }}
+                                      primary={vote.name}
+                                      secondary={null}
+                                    />
+                                    <ListItemIcon
+                                      style={{
+                                        // flex: 1,
+                                        // paddingLeft: 15,
+                                        justifyContent: "flex-end"
+                                      }}
+                                    >
+                                      <>
+                                        <Typography
+                                          style={{
+                                            color: vote.gender
+                                              ? "#69C3FF"
+                                              : "#E281AB",
+                                            fontWeight: "bold",
+                                            marginLeft: 5
+                                          }}
+                                        >
+                                          {vote.gender ? "בן" : "בת"}
+                                        </Typography>
+                                        <ChildCareTwoToneIcon
+                                          style={{
+                                            color: vote.gender
+                                              ? "#69C3FF"
+                                              : "#E281AB"
+                                          }}
+                                        />
+                                      </>
+                                    </ListItemIcon>
+                                  </ListItem>
+                                ))}
+                            </List>
+                          ) : (
+                            <img
+                              style={{
+                                maxWidth: "70%",
+                                alignSelf: "center"
+                              }}
+                              src={require(`../src/images/itsa${this.state.realGender}.png`)}
+                              alt="Logo"
+                            />
+                          ))}
+                      </div>
+                    ) : sortedVotes.length > 0 ? (
+                      sortedVotes.map((vote, i) => (
+                        <ListItem key={i}>
+                          <ListItemIcon>
+                            <PersonIcon />
+                          </ListItemIcon>
+                          <ListItemText
+                            primaryTypographyProps={{
+                              style: {
+                                fontWeight: "bold",
+                                color: "#8566BA"
+                              }
+                            }}
+                            primary={vote.name}
+                            secondary={null}
+                          />
+                          <ListItemIcon
                             style={{
-                              height: "100%",
-                              maxWidth: "90%"
+                              flex: 1,
+                              paddingLeft: 15,
+                              justifyContent: "flex-end"
                             }}
                           >
-                            {sortedVotes
-                              .filter(
-                                vote =>
-                                  vote.gender ===
-                                  (this.state.realGender === "boy")
-                              )
-                              .map((vote, i) => (
-                                <ListItem key={i}>
-                                  <ListItemText
-                                    primaryTypographyProps={{
-                                      style: {
-                                        fontWeight: "bold",
-                                        color: "#8566BA",
-                                        marginRight: "10%"
-                                      }
-                                    }}
-                                    primary={vote.name}
-                                    secondary={null}
-                                  />
-                                  <ListItemIcon
-                                    style={{
-                                      // flex: 1,
-                                      // paddingLeft: 15,
-                                      justifyContent: "flex-end"
-                                    }}
-                                  >
-                                    <>
-                                      <Typography
-                                        style={{
-                                          color: vote.gender
-                                            ? "#69C3FF"
-                                            : "#E281AB",
-                                          fontWeight: "bold",
-                                          marginLeft: 5
-                                        }}
-                                      >
-                                        {vote.gender ? "בן" : "בת"}
-                                      </Typography>
-                                      <ChildCareTwoToneIcon
-                                        style={{
-                                          color: vote.gender
-                                            ? "#69C3FF"
-                                            : "#E281AB"
-                                        }}
-                                      />
-                                    </>
-                                  </ListItemIcon>
-                                </ListItem>
-                              ))}
-                          </List>
-                        ) : (
-                          <img
-                            style={{
-                              maxWidth: "70%"
-                            }}
-                            src={require(`../src/images/itsa${this.state.realGender}.png`)}
-                            alt="Logo"
-                          />
-                        ))}
-                    </div>
-                  ) : sortedVotes.length > 0 ? (
-                    sortedVotes.map((vote, i) => (
-                      <ListItem key={i}>
-                        <ListItemIcon>
-                          <PersonIcon />
-                        </ListItemIcon>
+                            <>
+                              <Typography
+                                style={{
+                                  color: vote.gender ? "#69C3FF" : "#E281AB",
+                                  fontWeight: "bold",
+                                  marginLeft: 5
+                                }}
+                              >
+                                {vote.gender ? "בן" : "בת"}
+                              </Typography>
+                              <ChildCareTwoToneIcon
+                                style={{
+                                  color: vote.gender ? "#69C3FF" : "#E281AB"
+                                }}
+                              />
+                            </>
+                          </ListItemIcon>
+                        </ListItem>
+                      ))
+                    ) : (
+                      <ListItem
+                        style={{
+                          textAlign: "center",
+                          flex: 1,
+                          alignItems: "center",
+                          justifyContent: "center",
+                          alignSelf: "center"
+                        }}
+                      >
                         <ListItemText
                           primaryTypographyProps={{
                             style: {
@@ -424,85 +473,42 @@ export class App extends Component {
                               color: "#8566BA"
                             }
                           }}
-                          primary={vote.name}
+                          primary="עדיין אין הצבעות..."
                           secondary={null}
                         />
-                        <ListItemIcon
-                          style={{
-                            flex: 1,
-                            paddingLeft: 15,
-                            justifyContent: "flex-end"
-                          }}
-                        >
-                          <>
-                            <Typography
-                              style={{
-                                color: vote.gender ? "#69C3FF" : "#E281AB",
-                                fontWeight: "bold",
-                                marginLeft: 5
-                              }}
-                            >
-                              {vote.gender ? "בן" : "בת"}
-                            </Typography>
-                            <ChildCareTwoToneIcon
-                              style={{
-                                color: vote.gender ? "#69C3FF" : "#E281AB"
-                              }}
-                            />
-                          </>
-                        </ListItemIcon>
                       </ListItem>
-                    ))
-                  ) : (
-                    <ListItem
-                      style={{
-                        textAlign: "center",
-                        flex: 1,
-                        alignItems: "center",
-                        justifyContent: "center",
-                        alignSelf: "center"
-                      }}
-                    >
-                      <ListItemText
-                        primaryTypographyProps={{
-                          style: {
-                            fontWeight: "bold",
-                            color: "#8566BA"
-                          }
-                        }}
-                        primary="עדיין אין הצבעות..."
-                        secondary={null}
-                      />
-                    </ListItem>
-                  )}
-                </List>
+                    )}
+                  </List>
+                </div>
+              )}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#8566BA",
+                  flex: "1"
+                }}
+              >
+                <p style={{ margin: 0 }}>
+                  {this.state.isLoading
+                    ? ""
+                    : "⏰ ההצבעה " + this.state.timeLeft}
+                </p>
               </div>
-            )}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#8566BA",
-                flex: "1"
-              }}
-            >
-              <p style={{ margin: 0 }}>
-                {this.state.isLoading ? "" : "⏰ ההצבעה " + this.state.timeLeft}
-              </p>
             </div>
-          </div>
-          <Snackbar
-            open={this.state.nameError}
-            autoHideDuration={6000}
-            onClose={this.handleSnackClose}
-            anchorOrigin={{ horizontal: "center", vertical: "top" }}
-          >
-            <Alert onClose={this.handleSnackClose} severity="error">
-              שם כבר קיים או לא תקין!
-            </Alert>
-          </Snackbar>
+            <Snackbar
+              open={this.state.nameError}
+              autoHideDuration={6000}
+              onClose={this.handleSnackClose}
+              anchorOrigin={{ horizontal: "center", vertical: "top" }}
+            >
+              <Alert onClose={this.handleSnackClose} severity="error">
+                שם כבר קיים או לא תקין!
+              </Alert>
+            </Snackbar>
+          </Div100vh>
         </StylesProvider>
       </ThemeProvider>
     );
